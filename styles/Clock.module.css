@@ -1,0 +1,12 @@
+.h2 {
+  font-size: 3.5rem;
+  color: #EEE;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+@media (max-width: 768px) {
+  .h2 {
+    font-size: 2rem;
+  }
+}
