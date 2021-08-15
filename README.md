@@ -1,11 +1,13 @@
 ## Isn't it a bit early for a beer? It's five o'clock somewhere
 
-Want to find out where in the world it's 5pm so you can get the person bothering you off your back about cracking open a cold one? This will tell you where that place is: http://www.itsfiveoclocksomewhere.beer/
+Want to find out where in the world it's 5pm so you can get the person bothering you off your back about cracking open a cold one? This will tell you where that is: http://www.itsfiveoclocksomewhere.beer/
 
 Gorgeous images taken from here: https://www.pixeltrue.com/scenic-illustrations.
-Found on [Reddit](https://www.reddit.com/r/InternetIsBeautiful/comments/osgaly/we_turned_beautiful_landmarks_scenes_from_around/)
-_We turned beautiful landmarks & scenes from around the globe into Animated Illustrations. You can download the high-res PNG and source files for free. Use them commercially without attribution._
-Thank you u/crowesdfsdf!
+Inspired by this [Reddit post](https://www.reddit.com/r/InternetIsBeautiful/comments/osgaly/we_turned_beautiful_landmarks_scenes_from_around/):
+
+> _We turned beautiful landmarks & scenes from around the globe into Animated Illustrations. You can download the high-res PNG and source files for free. Use them commercially without attribution._
+
+Thank you `u/crowesdfsdf`!
 
 ## Technical details
 
