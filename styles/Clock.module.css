@@ -1,6 +1,9 @@
 .h2 {
+  font-family: "Varela Round";
   font-size: 3.5rem;
-  color: #EEE;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+  color: #eee;
   margin-top: 0.25em;
   margin-bottom: 0.25em;
 }

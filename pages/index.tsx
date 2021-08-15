@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Clock from "../src/Clock";
@@ -10,19 +11,31 @@ export default function Home() {
   const location = ImageDictionary[hoursUntil5pm];
 
   return (
-    <div className={styles.container}>
-      <Image
-        src={`/landscapes/${location[1]}`}
-        alt=""
-        layout="fill"
-        objectFit="cover"
-      />
-      <div className={styles.opacityLayer} />
-      <div className={styles.content}>
-        <p className={styles.p}>It&rsquo;s five o&rsquo;clock in...</p>
-        <h1 className={styles.h1}>{location[0]}</h1>
-        <Clock hoursUntil5pm={hoursUntil5pm} />
+    <>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Quicksand"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Varela+Round"
+          rel="stylesheet"
+        />
+      </Head>
+      <div className={styles.container}>
+        <Image
+          src={`/landscapes/${location[1]}`}
+          alt=""
+          layout="fill"
+          objectFit="cover"
+        />
+        <div className={styles.opacityLayer} />
+        <div className={styles.content}>
+          <p className={styles.p}>It&rsquo;s five o&rsquo;clock in...</p>
+          <h1 className={styles.h1}>{location[0]}</h1>
+          <Clock hoursUntil5pm={hoursUntil5pm} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
