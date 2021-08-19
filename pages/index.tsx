@@ -13,14 +13,6 @@ export default function Home() {
   return (
     <>
       <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Quicksand"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Varela+Round"
-          rel="stylesheet"
-        />
         <title>Have a beer, it&rsquo;s five o&rsquo;clock somewhere</title>
         <meta
           property="og:title"
