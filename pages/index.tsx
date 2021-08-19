@@ -21,6 +21,22 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Varela+Round"
           rel="stylesheet"
         />
+        <title>Have a beer, it&rsquo;s five o&rsquo;clock somewhere</title>
+        <meta
+          property="og:title"
+          content="Have a beer, it's five o'clock in..."
+        />
+        <meta name="description" content={location[0]} />
+        <meta
+          property="og:url"
+          content="https://www.itsfiveoclocksomewhere.beer"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_GB" />
+        <meta
+          property="og:image"
+          content="/landscapes/City-sunset-compressed.png"
+        ></meta>
       </Head>
       <div className={styles.container}>
         <Image
