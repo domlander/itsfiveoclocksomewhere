@@ -35,8 +35,9 @@ export default function Home() {
         <meta property="og:locale" content="en_GB" />
         <meta
           property="og:image"
-          content="/landscapes/City-sunset-compressed.png"
-        ></meta>
+          itemProp="image"
+          content="https://www.itsfiveoclocksomewhere.beer/landscapes/City-sunset-compressed.png"
+        />
       </Head>
       <div className={styles.container}>
         <Image
