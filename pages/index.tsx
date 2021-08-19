@@ -36,7 +36,7 @@ export default function Home() {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://www.itsfiveoclocksomewhere.beer/landscapes/City-sunset-compressed.png"
+          content="https://www.itsfiveoclocksomewhere.beer/landscapes/City-sunset.png"
         />
       </Head>
       <div className={styles.container}>
