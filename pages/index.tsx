@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat"
+          href="https://fonts.googleapis.com/css2?family=Quicksand"
           rel="stylesheet"
         />
         <link
@@ -29,7 +29,7 @@ export default function Home() {
         <meta name="description" content={location[0]} />
         <meta
           property="og:url"
-          content="https://www.itsfiveoclocksomewhere.beer"
+          content="https://www.itsfiveoclocksomewhere.beer/"
         />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_GB" />
