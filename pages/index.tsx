@@ -30,6 +30,8 @@ export default function Home() {
           itemProp="image"
           content="https://www.itsfiveoclocksomewhere.beer/landscapes/City-sunset.png"
         />
+        <meta property="og:image:width" content="750" />
+        <meta property="og:image:height" content="500" />
       </Head>
       <div className={styles.container}>
         <Image
