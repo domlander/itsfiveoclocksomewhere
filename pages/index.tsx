@@ -30,8 +30,8 @@ export default function Home() {
           itemProp="image"
           content="https://www.itsfiveoclocksomewhere.beer/landscapes/City-sunset.png"
         />
-        <meta property="og:image:width" content="750" />
-        <meta property="og:image:height" content="500" />
+        <meta property="og:image:width" content="407" />
+        <meta property="og:image:height" content="407" />
         <meta
           httpEquiv="Cache-Control"
           content="no-cache, no-store, must-revalidate"
