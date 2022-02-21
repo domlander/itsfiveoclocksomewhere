@@ -10,8 +10,8 @@ const ImageLookUp: Dictionary = {
   4: ["Mumbai", "India-sunset.svg"], // 8pm GMT
   5: ["Omsk", "Snow-sunset.svg"],
   6: ["Jakarta", "Indonesia-sunset.svg"],
-  7: ["Beijing", "China-sunset.svg"], // 12am GMT
-  8: ["Tokyo", "ItsukishimaGateJapan-sunset.svg"],
+  7: ["Beijing", "China-sunset.svg"],
+  8: ["Tokyo", "ItsukishimaGateJapan-sunset.svg"], // 12am GMT
   9: ["Sydney", "City-sunset.svg"],
   10: ["Magadan", "Snow-sunset.svg"],
   11: ["Auckland", "Valley-day.svg"],

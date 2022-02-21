@@ -5,9 +5,13 @@ import styles from "../styles/Home.module.css";
 import Clock from "../src/Clock";
 import ImageDictionary from "../src/ImageLookUp";
 
+const HOURS_IN_DAY = 24;
+const HOURS_BEFORE_5PM = 17;
+
 export default function Home() {
-  const hours = new Date().getUTCHours() + 1;
-  const hoursUntil5pm = (24 + 17 - hours) % 24;
+  const currentTimeInHours = new Date().getHours();
+  const hoursUntil5pm =
+    (HOURS_IN_DAY + HOURS_BEFORE_5PM - currentTimeInHours) % 24;
   const location = ImageDictionary[hoursUntil5pm];
 
   return (
