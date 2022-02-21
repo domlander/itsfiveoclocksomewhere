@@ -2,7 +2,7 @@ interface Dictionary {
   [Key: number]: [string, string];
 }
 
-const ImageLookUp: Dictionary = {
+const LocationImageMapping: Dictionary = {
   0: ["London", "London-sunset.svg"], // 4pm GMT
   1: ["Paris", "France-sunset.svg"],
   2: ["Nairobi", "Desert-sunset.svg"],
@@ -29,4 +29,4 @@ const ImageLookUp: Dictionary = {
   23: ["Timbuktu", "Desert-sunset.svg"],
 };
 
-export default ImageLookUp;
+export default LocationImageMapping;
