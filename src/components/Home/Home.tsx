@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import styles from "../../styles/Home.module.css";
-import Clock from "./Clock";
+import styles from "./Home.module.css";
+import Clock from "../Clock";
 
 const HOURS_IN_DAY = 24;
 const HOURS_BEFORE_5PM = 17;

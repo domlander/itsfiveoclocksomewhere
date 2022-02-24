@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../styles/Clock.module.css";
+import styles from "./Clock.module.css";
 
 interface Props {
   hoursUntil5pm: number;
