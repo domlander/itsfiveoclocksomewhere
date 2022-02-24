@@ -19,7 +19,7 @@ export default async function handler(
 
   const hoursUntil5pm = parseInt(req.query.hoursUntil5pm as string);
   const matchingLocations = locations.filter(
-    (location) => (location.utc_offset + 24) % 24 === hoursUntil5pm
+    (location) => (location.gmtOffset + 24) % 24 === hoursUntil5pm
   );
 
   const location = matchingLocations[0] || null;

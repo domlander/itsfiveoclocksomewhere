@@ -41,7 +41,7 @@ export default async function handler(
       filter: { name: item?.name },
       update: {
         $set: {
-          utc_offset: item?.gmtOffset,
+          gmtOffset: item?.gmtOffset,
           image: item?.image,
           last_updated: new Date().toISOString(),
         },
