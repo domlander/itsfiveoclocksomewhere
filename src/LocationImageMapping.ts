@@ -1,32 +1,91 @@
-interface Dictionary {
-  [Key: number]: [string, string];
-}
+import { Location } from "./types/Location";
 
-const LocationImageMapping: Dictionary = {
-  0: ["London", "London-sunset.svg"], // 4pm GMT
-  1: ["Paris", "France-sunset.svg"],
-  2: ["Nairobi", "Desert-sunset.svg"],
-  3: ["Dubai", "Desert-sunset.svg"],
-  4: ["Mumbai", "India-sunset.svg"], // 8pm GMT
-  5: ["Omsk", "Snow-sunset.svg"],
-  6: ["Jakarta", "Indonesia-sunset.svg"],
-  7: ["Beijing", "China-sunset.svg"],
-  8: ["Tokyo", "ItsukishimaGateJapan-sunset.svg"], // 12am GMT
-  9: ["Sydney", "City-sunset.svg"],
-  10: ["Magadan", "Snow-sunset.svg"],
-  11: ["Auckland", "Valley-day.svg"],
-  12: ["Tonga", "tropical-sunset.svg"], // 4am GMT
-  13: ["Honolulu", "tropical-sunset.svg"],
-  14: ["Adak", "Snow-sunset.svg"],
-  15: ["Alaska", "Snow-sunset.svg"],
-  16: ["Los Angeles", "City-sunset.svg"], // 8am GMT
-  17: ["Denver", "HillsandMountains-sunset.svg"],
-  18: ["Chicago", "Lake-sunset.svg"],
-  19: ["New York", "USA-sunset.svg"],
-  20: ["Brasilia", "Forest-sunset.svg"], // 12pm GMT
-  21: ["Greenland", "Snow-sunset.svg"],
-  22: ["Cape Verde", "SeaLighthouse-sunset.svg"],
-  23: ["Timbuktu", "Desert-sunset.svg"],
-};
+const LocationImageMapping: Location[] = [
+  {
+    name: "London",
+    zoneName: "Europe/London",
+    image: "London-sunset.svg",
+  },
+  { name: "Paris", zoneName: "Europe/Paris", image: "France-sunset.svg" },
+  { name: "Cairo", zoneName: "Africa/Cairo", image: "Desert-sunset.svg" },
+  { name: "Nairobi", zoneName: "Africa/Nairobi", image: "Desert-sunset.svg" },
+  { name: "Dubai", zoneName: "Asia/Dubai", image: "Desert-sunset.svg" },
+  {
+    name: "Maldives",
+    zoneName: "Indian/Maldives",
+    image: "Tropical-sunset.svg",
+  },
+  { name: "Mumbai", zoneName: "Asia/Kolkata", image: "India-sunset.svg" },
+  { name: "Kathmandu", zoneName: "Asia/Kathmandu", image: "Snow-sunset.svg" },
+  { name: "Omsk", zoneName: "Asia/Omsk", image: "Snow-sunset.svg" },
+  { name: "Jakarta", zoneName: "Asia/Jakarta", image: "Indonesia-sunset.svg" },
+  { name: "Beijing", zoneName: "Asia/Shanghai", image: "China-sunset.svg" },
+  {
+    name: "Tokyo",
+    zoneName: "Asia/Tokyo",
+    image: "ItsukishimaGateJapan-sunset.svg",
+  },
+  {
+    name: "Vladivostok",
+    zoneName: "Asia/Vladivostok",
+    image: "Snow-sunset.svg",
+  },
+  { name: "Sydney", zoneName: "Australia/Sydney", image: "City-sunset.svg" },
+  { name: "Magadan", zoneName: "Asia/Magadan", image: "Snow-sunset.svg" },
+  { name: "Fiji", zoneName: "Pacific/Fiji", image: "Tropical-sunset.svg" },
+  { name: "Auckland", zoneName: "Pacific/Auckland", image: "Valley-day.svg" },
+  {
+    name: "Tonga",
+    zoneName: "Pacific/Tongatapu",
+    image: "tropical-sunset.svg",
+  },
+  {
+    name: "Niue",
+    zoneName: "Pacific/Niue",
+    image: "tropical-sunset.svg",
+  },
+  {
+    name: "Honolulu",
+    zoneName: "Pacific/Honolulu",
+    image: "tropical-sunset.svg",
+  },
+  { name: "Adak", zoneName: "America/Adak", image: "Snow-sunset.svg" },
+  { name: "Alaska", zoneName: "America/Metlakatla", image: "Snow-sunset.svg" },
+  {
+    name: "Los Angeles",
+    zoneName: "America/Los_Angeles",
+    image: "City-sunset.svg",
+  },
+  {
+    name: "Denver",
+    zoneName: "America/Denver",
+    image: "HillsandMountains-sunset.svg",
+  },
+  { name: "Chicago", zoneName: "America/Chicago", image: "Lake-sunset.svg" },
+  { name: "New York", zoneName: "America/New_York", image: "USA-sunset.svg" },
+  {
+    name: "Barbados",
+    zoneName: "America/Barbados",
+    image: "Tropical-sunset.svg",
+  },
+  {
+    name: "Brasilia",
+    zoneName: "America/Araguaina",
+    image: "Forest-sunset.svg",
+  },
+  { name: "Greenland", zoneName: "America/Nuuk", image: "Snow-sunset.svg" },
+  { name: "Noronha", zoneName: "America/Noronha", image: "Snow-sunset.svg" },
+  {
+    name: "Cape Verde",
+    zoneName: "Atlantic/Cape_Verde",
+    image: "SeaLighthouse-sunset.svg",
+  },
+  {
+    name: "Azores",
+    zoneName: "Atlantic/Azores",
+    image: "HillsandMountains-sunset.svg",
+  },
+  { name: "Timbuktu", zoneName: "Africa/Bamako", image: "Desert-sunset.svg" },
+];
 
 export default LocationImageMapping;

@@ -1,28 +1,20 @@
 import React from "react";
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import Clock from "../src/Clock";
-import LocationImageMapping from "../src/LocationImageMapping";
-
-const HOURS_IN_DAY = 24;
-const HOURS_BEFORE_5PM = 17;
+import Homepage from "../src/components/Home";
 
 export default function Home() {
-  const currentTimeInHours = new Date().getHours();
-  const hoursUntil5pm =
-    (HOURS_IN_DAY + HOURS_BEFORE_5PM - currentTimeInHours) % 24;
-  const location = LocationImageMapping[hoursUntil5pm];
-
   return (
     <>
       <Head>
         <title>Have a beer, it&rsquo;s five o&rsquo;clock somewhere</title>
         <meta
           property="og:title"
-          content="Have a beer, it's five o'clock in..."
+          content="Have a beer, it's five o'clock somewhere"
         />
-        <meta name="description" content={location[0]} />
+        <meta
+          name="description"
+          content="Find a town or city somewhere the world where it is currently 5pm."
+        />
         <meta
           property="og:url"
           content="https://www.itsfiveoclocksomewhere.beer/"
@@ -36,6 +28,7 @@ export default function Home() {
         />
         <meta property="og:image:width" content="407" />
         <meta property="og:image:height" content="407" />
+        {/* A failed attempt to get the Whatsapp unfurl to show up-to-date information */}
         <meta
           httpEquiv="Cache-Control"
           content="no-cache, no-store, must-revalidate"
@@ -43,20 +36,7 @@ export default function Home() {
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
       </Head>
-      <div className={styles.container}>
-        <Image
-          src={`/landscapes/${location[1]}`}
-          alt=""
-          layout="fill"
-          objectFit="cover"
-        />
-        <div className={styles.opacityLayer} />
-        <div className={styles.content}>
-          <p className={styles.p}>It&rsquo;s five o&rsquo;clock in...</p>
-          <h1 className={styles.h1}>{location[0]}</h1>
-          <Clock hoursUntil5pm={hoursUntil5pm} />
-        </div>
-      </div>
+      <Homepage />
     </>
   );
 }
