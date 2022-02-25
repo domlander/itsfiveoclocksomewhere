@@ -1,6 +1,6 @@
 import { Location } from "./types/Location";
 
-const LocationImageMapping: Location[] = [
+const LocationImageMapping: Pick<Location, "name" | "zoneName" | "image">[] = [
   {
     name: "London",
     zoneName: "Europe/London",
