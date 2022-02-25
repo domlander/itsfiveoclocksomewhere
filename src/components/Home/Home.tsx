@@ -5,29 +5,31 @@ import Clock from "../Clock";
 
 const HOURS_IN_DAY = 24;
 const HOURS_BEFORE_5PM = 17;
+const DEFAULT_LOCATION = "Somewhere";
+const DEFAULT_IMAGE = "Tropical-sunset.svg";
+const DEFAULT_LOCATION_DATA = {
+  name: DEFAULT_LOCATION,
+  image: DEFAULT_IMAGE,
+};
 
 const Home = () => {
-  const currentTimeInHours = new Date().getHours();
+  const currentUTCHours = new Date().getUTCHours();
   const hoursUntil5pm =
-    (HOURS_IN_DAY + HOURS_BEFORE_5PM - currentTimeInHours) % 24;
+    (HOURS_IN_DAY + HOURS_BEFORE_5PM - currentUTCHours) % 24;
 
   const [location, setLocation] = useState<string | null>(null);
   const [image, setImage] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchLocationsFromDb = async () => {
-      const data = await fetch(
-        `/api/getCurrentLocation?hoursUntil5pm=${hoursUntil5pm}`
-      );
-      return data;
-    };
+    const fetchLocationsFromDb = async () =>
+      await fetch(`/api/getCurrentLocation?hoursUntil5pm=${hoursUntil5pm}`)
+        .then((res) => (res.ok ? res.json() : DEFAULT_LOCATION_DATA))
+        .catch(() => DEFAULT_LOCATION_DATA);
 
-    fetchLocationsFromDb()
-      .then((data) => data.json())
-      .then(({ name, image }) => {
-        setLocation(name);
-        setImage(image);
-      });
+    fetchLocationsFromDb().then(({ name, image }) => {
+      setLocation(name);
+      setImage(image);
+    });
   }, [hoursUntil5pm]);
 
   if (!location || !image) return null;

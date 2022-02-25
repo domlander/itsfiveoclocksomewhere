@@ -7,7 +7,7 @@ interface Props {
 
 const timeToDisplay = (hours: number) => {
   const now = new Date();
-  now.setHours((now.getHours() + hours) % 24);
+  now.setHours((now.getUTCHours() + hours) % 24);
   return now.toLocaleTimeString();
 };
 

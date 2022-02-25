@@ -6,9 +6,13 @@ type Data = {
   image: string;
 };
 
+type Error = {
+  error: string;
+};
+
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Data | Error>
 ) {
   const client = await clientPromise;
   const locations = await client
@@ -23,6 +27,11 @@ export default async function handler(
   );
 
   const location = matchingLocations[0] || null;
+  if (!location) {
+    return res
+      .status(500)
+      .json({ error: "failed to find a suitable location" });
+  }
 
-  res.status(200).json({ name: location?.name, image: location?.image });
+  return res.status(200).json({ name: location.name, image: location.image });
 }
