@@ -35,6 +35,8 @@ export default function Home() {
         />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
+        {/* Refresh page every minute */}
+        <meta httpEquiv="refresh" content="60" />
       </Head>
       <Homepage />
     </>
