@@ -1,6 +1,6 @@
-.h2 {
-  font-family: "Varela Round", sans-serif;
-  font-size: 3.5rem;
+.clock {
+  font-family: "Varela Round", monospace;
+  font-size: 4vw;
   letter-spacing: 0.1rem;
   font-weight: 400;
   color: #eee;
@@ -9,7 +9,7 @@
 }
 
 @media (max-width: 768px) {
-  .h2 {
-    font-size: 2rem;
+  .clock {
+    font-size: 20vw;
   }
 }

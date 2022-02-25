@@ -17,11 +17,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link
-            href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Varela+Round&display=optional"
             rel="stylesheet"
           />
         </Head>

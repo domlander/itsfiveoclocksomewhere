@@ -22,7 +22,7 @@ const Clock = ({ hoursUntil5pm }: Props) => {
     return () => clearInterval(id);
   }, [hoursUntil5pm]);
 
-  return <h2 className={styles.h2}>{clock}</h2>;
+  return <p className={styles.clock}>{clock}</p>;
 };
 
 export default Clock;

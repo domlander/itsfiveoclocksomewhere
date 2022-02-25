@@ -42,8 +42,8 @@ const Home = () => {
       />
       <div className={styles.opacityLayer} />
       <div className={styles.content}>
-        <p className={styles.p}>It&rsquo;s five o&rsquo;clock in...</p>
-        <h1 className={styles.h1}>{location}</h1>
+        <p className={styles.text}>It&rsquo;s five o&rsquo;clock in...</p>
+        <p className={styles.location}>{location}</p>
         <Clock hoursUntil5pm={hoursUntil5pm} />
       </div>
     </div>
