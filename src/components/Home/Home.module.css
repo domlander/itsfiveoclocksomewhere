@@ -28,7 +28,7 @@
 .text {
   font-size: 2vw;
   letter-spacing: 0.05rem;
-  color: #d8d8d8;
+  color: #eee;
   margin-top: 0.25em;
   margin-bottom: 0;
 }
@@ -44,7 +44,7 @@
   font-weight: 400;
   color: #fff;
   margin-top: 0.125em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.25em;
 }
 @media (max-width: 768px) {
   .location {
