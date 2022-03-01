@@ -74,7 +74,11 @@ const LocationImageMapping: Pick<Location, "name" | "zoneName" | "image">[] = [
     image: "Forest-sunset.svg",
   },
   { name: "Greenland", zoneName: "America/Nuuk", image: "Snow-sunset.svg" },
-  { name: "Noronha", zoneName: "America/Noronha", image: "Snow-sunset.svg" },
+  {
+    name: "Noronha",
+    zoneName: "America/Noronha",
+    image: "Tropical-sunset.svg",
+  },
   {
     name: "Cape Verde",
     zoneName: "Atlantic/Cape_Verde",
