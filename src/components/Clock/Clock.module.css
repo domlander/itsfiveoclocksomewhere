@@ -1,15 +1,14 @@
 .clock {
   font-family: "Varela Round", monospace;
-  font-size: 4vw;
+  font-size: 6vw;
   letter-spacing: 0.1rem;
   font-weight: 400;
   color: #eee;
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
   .clock {
-    font-size: 20vw;
+    font-size: 9vw;
   }
 }
