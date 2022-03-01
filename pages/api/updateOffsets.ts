@@ -9,10 +9,19 @@ type Data = {
   locations: Location[];
 };
 
+type Error = {
+  error: string;
+};
+
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Data | Error>
 ) {
+  const secret = req.query.secret as string;
+  if (!secret || secret !== process.env.ACTIONS_SECRET) {
+    return res.status(401).send({ error: "Unauthorised" });
+  }
+
   // Fetch up-to-date timezone data for all locations that the API supports
   const apiLocationData: ApiLocation[] = await getApiLocationData();
   if (!apiLocationData) return res.status(200);
