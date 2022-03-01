@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Home.module.css";
-import Clock from "../Clock";
+import useClock from "../../hooks/useClock";
 
 const HOURS_IN_DAY = 24;
 const HOURS_BEFORE_5PM = 17;
@@ -12,13 +12,20 @@ const DEFAULT_LOCATION_DATA = {
   image: DEFAULT_IMAGE,
 };
 
+const getTimeIn5pmLocation = (hours: number) => {
+  const now = new Date();
+  now.setHours((now.getUTCHours() + hours) % 24);
+  return now;
+};
+
 const Home = () => {
-  const currentUTCHours = new Date().getUTCHours();
+  const currentGMTHours = new Date().getUTCHours();
   const hoursUntil5pm =
-    (HOURS_IN_DAY + HOURS_BEFORE_5PM - currentUTCHours) % 24;
+    (HOURS_IN_DAY + HOURS_BEFORE_5PM - currentGMTHours) % 24;
 
   const [location, setLocation] = useState<string | null>(null);
   const [image, setImage] = useState<string | null>(null);
+  const time = useClock(getTimeIn5pmLocation(hoursUntil5pm));
 
   useEffect(() => {
     const fetchLocationsFromDb = async () =>
@@ -44,9 +51,12 @@ const Home = () => {
       />
       <div className={styles.opacityLayer} />
       <div className={styles.content}>
-        <p className={styles.text}>It&rsquo;s five o&rsquo;clock in...</p>
+        <p className={styles.text}>
+          It&rsquo;s five o&rsquo;clock
+          {location === DEFAULT_LOCATION ? "..." : " in..."}
+        </p>
         <p className={styles.location}>{location}</p>
-        <Clock hoursUntil5pm={hoursUntil5pm} />
+        <p className={styles.clock}>{time}</p>
       </div>
     </div>
   );
