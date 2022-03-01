@@ -18,3 +18,5 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 A Mongo database is used to store all locations that can be used. This is hosted on [MongoDB Cloud Services](https://www.mongodb.com/cloud).
 
 A Github action is used to daily trigger an update to the `gmtOffset` field of each location in the locations document, to make sure that we have accurate data, in case a country has a change in timezone (e.g. daylight savings).
+
+We use [TimeZoneDB](https://timezonedb.com/api) to provide timezones of locations via their free API.
