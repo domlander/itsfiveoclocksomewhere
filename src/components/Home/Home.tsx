@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Home.module.css";
 import useClock from "../../hooks/useClock";
+import Loading from "../Loading";
 
 const HOURS_IN_DAY = 24;
 const HOURS_BEFORE_5PM = 17;
@@ -34,12 +35,14 @@ const Home = () => {
         .catch(() => DEFAULT_LOCATION_DATA);
 
     fetchLocationsFromDb().then(({ name, image }) => {
-      setLocation(name);
-      setImage(image);
+      setTimeout(() => {
+        setLocation(name);
+        setImage(image);
+      }, 1000);
     });
   }, [hoursUntil5pm]);
 
-  if (!location || !image) return null;
+  if (!location || !image) return <Loading />;
 
   return (
     <div className={styles.container}>

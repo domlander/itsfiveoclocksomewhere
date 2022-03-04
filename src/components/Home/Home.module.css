@@ -31,11 +31,6 @@
   color: #ddd;
   margin: 0;
 }
-@media (max-width: 768px) {
-  .text {
-    font-size: 5vw;
-  }
-}
 
 .location {
   font-size: 10vw;
@@ -44,11 +39,6 @@
   color: #fff;
   margin-top: 0.125em;
   margin-bottom: 0.5em;
-}
-@media (max-width: 768px) {
-  .location {
-    font-size: 14vw;
-  }
 }
 
 .clock {
@@ -61,6 +51,14 @@
 }
 
 @media (max-width: 768px) {
+  .text {
+    font-size: 5vw;
+  }
+
+  .location {
+    font-size: 14vw;
+  }
+
   .clock {
     font-size: 9vw;
   }
