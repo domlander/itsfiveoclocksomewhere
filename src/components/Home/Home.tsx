@@ -35,10 +35,12 @@ const Home = () => {
         .catch(() => DEFAULT_LOCATION_DATA);
 
     fetchLocationsFromDb().then(({ name, image }) => {
+      // Code smell. Waits to set Location so loading page doesn't flash in and out.
+      // Ideally this would only occur if the page is loaded instantly.
       setTimeout(() => {
         setLocation(name);
         setImage(image);
-      }, 1000);
+      }, 600);
     });
   }, [hoursUntil5pm]);
 
