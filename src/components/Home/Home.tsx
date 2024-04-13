@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Home.module.css";
-import useClock from "../../hooks/useClock";
 import Loading from "../Loading";
+import useClock from "../../hooks/useClock";
+import usePageVisibility from "../../hooks/usePageVisible";
 
 const HOURS_IN_DAY = 24;
 const HOURS_BEFORE_5PM = 17;
@@ -27,6 +28,7 @@ const Home = () => {
   const [location, setLocation] = useState<string | null>(null);
   const [image, setImage] = useState<string | null>(null);
   const time = useClock(getTimeIn5pmLocation(hoursUntil5pm));
+  const isPageVisible = usePageVisibility();
 
   useEffect(() => {
     const fetchLocationsFromDb = async () =>
@@ -44,13 +46,19 @@ const Home = () => {
     });
   }, [hoursUntil5pm]);
 
+  useEffect(() => {
+    if (isPageVisible) {
+      window.location.reload();
+    }
+  }, [isPageVisible]);
+
   if (!location || !image) return <Loading />;
 
   return (
     <div className={styles.container}>
       <Image
         src={`/landscapes/${image}`}
-        alt=""
+        alt="A soft landscape"
         layout="fill"
         objectFit="cover"
       />
