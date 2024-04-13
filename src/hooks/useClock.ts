@@ -5,8 +5,8 @@ const useClock = (startTime: Date) => {
 
   useEffect(() => {
     let id = setInterval(() => {
-      startTime.setSeconds(time.getSeconds() + 1);
-      setTime(startTime);
+      const newTime = new Date(time.getTime() + 1000);
+      setTime(newTime);
     }, 1000);
 
     return () => clearInterval(id);
