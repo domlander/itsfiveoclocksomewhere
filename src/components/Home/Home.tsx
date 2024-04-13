@@ -20,25 +20,29 @@ const getTimeIn5pmLocation = (hours: number) => {
   return now;
 };
 
-const Home = () => {
+const getHoursUntil5pm = () => {
   const currentGMTHours = new Date().getUTCHours();
   const hoursUntil5pm =
     (HOURS_IN_DAY + HOURS_BEFORE_5PM - currentGMTHours) % 24;
+  return hoursUntil5pm;
+};
+
+const fetchLocationsFromDb = async (hoursUntil5pm: number) =>
+  await fetch(`/api/getCurrentLocation?hoursUntil5pm=${hoursUntil5pm}`)
+    .then((res) => (res.ok ? res.json() : DEFAULT_LOCATION_DATA))
+    .catch(() => DEFAULT_LOCATION_DATA);
+
+const Home = () => {
+  const hoursUntil5pm: number = getHoursUntil5pm();
 
   const [location, setLocation] = useState<string | null>(null);
   const [image, setImage] = useState<string | null>(null);
-  const time = useClock(getTimeIn5pmLocation(hoursUntil5pm));
-  const isPageVisible = usePageVisibility();
+  const time: string = useClock(getTimeIn5pmLocation(hoursUntil5pm));
+  const isPageVisible: boolean = usePageVisibility();
 
   useEffect(() => {
-    const fetchLocationsFromDb = async () =>
-      await fetch(`/api/getCurrentLocation?hoursUntil5pm=${hoursUntil5pm}`)
-        .then((res) => (res.ok ? res.json() : DEFAULT_LOCATION_DATA))
-        .catch(() => DEFAULT_LOCATION_DATA);
-
-    fetchLocationsFromDb().then(({ name, image }) => {
-      // Code smell. Waits to set Location so loading page doesn't flash in and out.
-      // Ideally this would only occur if the page is loaded instantly.
+    fetchLocationsFromDb(hoursUntil5pm).then(({ name, image }) => {
+      // Waits to set location so loading page doesn't flash in and out
       setTimeout(() => {
         setLocation(name);
         setImage(image);
@@ -46,11 +50,22 @@ const Home = () => {
     });
   }, [hoursUntil5pm]);
 
+  /**
+   * Refresh the page when both of the following are true:
+   * - the page becomes visible
+   * - It is now 5pm somewhere else (the location has changed)
+   */
   useEffect(() => {
-    if (isPageVisible) {
-      window.location.reload();
+    if (!isPageVisible) {
+      return;
     }
-  }, [isPageVisible]);
+
+    fetchLocationsFromDb(hoursUntil5pm).then(({ name }) => {
+      if (name !== location) {
+        window.location.reload();
+      }
+    });
+  }, [isPageVisible, hoursUntil5pm, location]);
 
   if (!location || !image) return <Loading />;
 

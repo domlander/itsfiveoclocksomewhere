@@ -3,4 +3,5 @@ export type Location = {
   image: string;
   zoneName: string;
   gmtOffset: number;
+  last_updated: string;
 };
