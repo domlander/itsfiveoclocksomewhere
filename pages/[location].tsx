@@ -39,7 +39,7 @@ export default function Page({ location, gmtOffset, image }: Props) {
         <meta property="og:title" content={`Have a beer in ${location}`} />
         <meta
           name="description"
-          content={`Find out whether it's time for a beer in ${location}`}
+          content={`It's 5pm in ${location} and time for a beer`}
         />
         <meta
           property="og:url"
