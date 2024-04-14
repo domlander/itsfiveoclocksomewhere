@@ -1,13 +1,10 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
+import Link from "next/link";
 import clientPromise from "../utils/mongodb";
 import styles from "../src/components/Home/Home.module.css";
 import useClock from "../src/hooks/useClock";
-import {
-  getHoursUntil5pm,
-  getTimeIn5pmLocation,
-} from "../src/components/Home/Home";
-import Link from "next/link";
 import Background from "../src/components/Background";
+import { getGMTHoursUntil5pm } from "../src/utils";
 
 type Props = {
   location: string;
@@ -15,9 +12,15 @@ type Props = {
   image: string;
 };
 
+export const getTimeIn5pmLocation = (gmtOffset: number) => {
+  const now = new Date();
+  now.setHours((now.getUTCHours() + gmtOffset) % 24);
+  return now;
+};
+
 export default function Page({ location, gmtOffset, image }: Props) {
   const time: string = useClock(getTimeIn5pmLocation(gmtOffset));
-  const hoursUntil5pmInThisLocation = getHoursUntil5pm();
+  const hoursUntil5pmInThisLocation = getGMTHoursUntil5pm();
 
   if (gmtOffset === hoursUntil5pmInThisLocation) {
     return (
