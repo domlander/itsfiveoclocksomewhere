@@ -1,10 +1,12 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
-import Link from "next/link";
-import clientPromise from "../utils/mongodb";
-import styles from "../src/components/Home/Home.module.css";
-import useClock from "../src/hooks/useClock";
+import { useEffect, useState } from "react";
+import FivePm from "../src/components/FivePm/FivePm";
+import NotFivePm from "../src/components/NotFivePm";
 import Background from "../src/components/Background";
-import { getGMTHoursUntil5pm } from "../src/utils";
+import useClock from "../src/hooks/useClock";
+import usePageVisibility from "../src/hooks/usePageVisible";
+import clientPromise from "../utils/mongodb";
+import { getGMTHoursUntil5pm, getTimeInLocation } from "../src/utils";
 
 type Props = {
   location: string;
@@ -12,41 +14,30 @@ type Props = {
   image: string;
 };
 
-export const getTimeIn5pmLocation = (gmtOffset: number) => {
-  const now = new Date();
-  now.setHours((now.getUTCHours() + gmtOffset) % 24);
-  return now;
-};
-
 export default function Page({ location, gmtOffset, image }: Props) {
-  const time: string = useClock(getTimeIn5pmLocation(gmtOffset));
-  const hoursUntil5pmInThisLocation = getGMTHoursUntil5pm();
+  const [startTime, setStartTime] = useState(getTimeInLocation(gmtOffset));
+  const time = useClock(startTime);
+  const isPageVisible: boolean = usePageVisibility();
 
-  if (gmtOffset === hoursUntil5pmInThisLocation) {
-    return (
-      <Background image={image}>
-        <div className={styles.content}>
-          <p className={styles.text}>It&rsquo;s five o&rsquo;clock in...</p>
-          <p className={styles.location}>{location}</p>
-          <p className={styles.clock}>{time}</p>
-        </div>
-      </Background>
-    );
-  }
+  /**
+   * When the user navigates away from the page and back again, we
+   * need to update the clock as it may have become out of sync.
+   */
+  useEffect(() => {
+    if (!isPageVisible) {
+      return;
+    }
+
+    setStartTime(getTimeInLocation(gmtOffset));
+  }, [gmtOffset, isPageVisible]);
 
   return (
     <Background image={image}>
-      <div className={styles.content}>
-        <p className={styles.itWas}>
-          It was 5pm in <span style={{ fontSize: "140%" }}>{location}</span>
-        </p>
-        <p className={styles.isNow}>
-          It is now <span style={{ fontSize: "140%" }}>{time}</span>
-        </p>
-        <Link href="/">
-          <a className={styles.question}>Where is it 5pm now?</a>
-        </Link>
-      </div>
+      {gmtOffset === getGMTHoursUntil5pm() ? (
+        <FivePm location={location} time={time} />
+      ) : (
+        <NotFivePm location={location} time={time} />
+      )}
     </Background>
   );
 }

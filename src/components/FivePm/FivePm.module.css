@@ -9,7 +9,7 @@
 .text {
   text-align: center;
   letter-spacing: 0.05rem;
-  color: #ccc;
+  color: #dadada;
   margin: 0;
 
   font-size: 5vw;
@@ -40,40 +40,6 @@
   margin: 0;
 
   font-size: 8vw;
-  @media (min-width: 768px) {
-    font-size: 5vw;
-  }
-}
-
-.itWas {
-  text-align: center;
-  font-size: 3vw;
-  letter-spacing: 0.05rem;
-  color: #ccc;
-  margin: 0;
-  font-size: 5vw;
-  @media (min-width: 768px) {
-    font-size: 3vw;
-  }
-}
-
-.isNow {
-  text-align: center;
-  font-size: 3vw;
-  letter-spacing: 0.05rem;
-  color: #ccc;
-  margin-top: 0.25em;
-  font-size: 5vw;
-  @media (min-width: 768px) {
-    font-size: 3vw;
-  }
-}
-
-.question {
-  color: #eee;
-  margin-top: 0.5em;
-  
-  font-size: 7vw;
   @media (min-width: 768px) {
     font-size: 5vw;
   }

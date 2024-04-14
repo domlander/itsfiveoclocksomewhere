@@ -7,11 +7,18 @@ const DEFAULT_LOCATION_DATA = {
   image: DEFAULT_IMAGE,
 };
 
+export const getTimeInLocation = (gmtOffset: number) => {
+  const now = new Date();
+  now.setHours((now.getUTCHours() + gmtOffset) % 24);
+  return now;
+};
+
+/**
+ * Time in the location where it is 5pm
+ */
 export const getTimeIn5pmLocation = () => {
   const hours = getGMTHoursUntil5pm();
-  const now = new Date();
-  now.setHours((now.getUTCHours() + hours) % 24);
-  return now;
+  return getTimeInLocation(hours);
 };
 
 export const getGMTHoursUntil5pm = () => {

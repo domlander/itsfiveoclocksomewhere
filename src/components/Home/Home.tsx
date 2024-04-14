@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Home.module.css";
+import FivePm from "../FivePm";
+import Background from "../Background";
 import Loading from "../Loading";
 import useClock from "../../hooks/useClock";
 import usePageVisibility from "../../hooks/usePageVisible";
-import Background from "../Background";
 import {
-  DEFAULT_LOCATION,
   fetchLocationsFromDb,
   getGMTHoursUntil5pm,
   getTimeIn5pmLocation,
@@ -72,14 +71,7 @@ const Home = () => {
 
   return (
     <Background image={image}>
-      <div className={styles.content}>
-        <p className={styles.text}>
-          It&rsquo;s five o&rsquo;clock
-          {location === DEFAULT_LOCATION ? "..." : " in..."}
-        </p>
-        <p className={styles.location}>{location}</p>
-        <p className={styles.clock}>{time}</p>
-      </div>
+      <FivePm location={location} time={time} />
     </Background>
   );
 };
