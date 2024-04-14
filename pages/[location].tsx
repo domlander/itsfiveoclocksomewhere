@@ -1,6 +1,5 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import clientPromise from "../utils/mongodb";
-import Image from "next/image";
 import styles from "../src/components/Home/Home.module.css";
 import useClock from "../src/hooks/useClock";
 import {
@@ -8,6 +7,7 @@ import {
   getTimeIn5pmLocation,
 } from "../src/components/Home/Home";
 import Link from "next/link";
+import Background from "../src/components/Background";
 
 type Props = {
   location: string;
@@ -21,32 +21,18 @@ export default function Page({ location, gmtOffset, image }: Props) {
 
   if (gmtOffset === hoursUntil5pmInThisLocation) {
     return (
-      <div className={styles.container}>
-        <Image
-          src={`/landscapes/${image}`}
-          alt="A soft landscape"
-          layout="fill"
-          objectFit="cover"
-        />
-        <div className={styles.opacityLayer} />
+      <Background image={image}>
         <div className={styles.content}>
           <p className={styles.text}>It&rsquo;s five o&rsquo;clock in...</p>
           <p className={styles.location}>{location}</p>
           <p className={styles.clock}>{time}</p>
         </div>
-      </div>
+      </Background>
     );
   }
 
   return (
-    <div className={styles.container}>
-      <Image
-        src={`/landscapes/${image}`}
-        alt="A soft landscape"
-        layout="fill"
-        objectFit="cover"
-      />
-      <div className={styles.opacityLayer} />
+    <Background image={image}>
       <div className={styles.content}>
         <p className={styles.itWas}>
           It was 5pm in <span style={{ fontSize: "140%" }}>{location}</span>
@@ -58,7 +44,7 @@ export default function Page({ location, gmtOffset, image }: Props) {
           <a className={styles.question}>Where is it 5pm now?</a>
         </Link>
       </div>
-    </div>
+    </Background>
   );
 }
 

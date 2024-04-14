@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import styles from "./Home.module.css";
 import Loading from "../Loading";
 import useClock from "../../hooks/useClock";
 import usePageVisibility from "../../hooks/usePageVisible";
+import Background from "../Background";
 
 const HOURS_IN_DAY = 24;
 const HOURS_BEFORE_5PM = 17;
@@ -70,14 +70,7 @@ const Home = () => {
   if (!location || !image) return <Loading />;
 
   return (
-    <div className={styles.container}>
-      <Image
-        src={`/landscapes/${image}`}
-        alt="A soft landscape"
-        layout="fill"
-        objectFit="cover"
-      />
-      <div className={styles.opacityLayer} />
+    <Background image={image}>
       <div className={styles.content}>
         <p className={styles.text}>
           It&rsquo;s five o&rsquo;clock
@@ -86,7 +79,7 @@ const Home = () => {
         <p className={styles.location}>{location}</p>
         <p className={styles.clock}>{time}</p>
       </div>
-    </div>
+    </Background>
   );
 };
 
