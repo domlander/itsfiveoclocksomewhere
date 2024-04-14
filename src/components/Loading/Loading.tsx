@@ -12,6 +12,7 @@ const Loading = () => {
         height={120}
         width={120}
         className={styles.image}
+        priority
       />
     </div>
   );

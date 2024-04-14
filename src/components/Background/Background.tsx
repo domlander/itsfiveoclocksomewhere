@@ -15,6 +15,7 @@ const Background = ({ image, children }: Props) => {
         alt="A soft landscape"
         layout="fill"
         objectFit="cover"
+        priority
       />
       <div className={styles.opacityLayer} />
       {children}
