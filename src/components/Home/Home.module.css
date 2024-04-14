@@ -26,40 +26,74 @@
 }
 
 .text {
-  font-size: 2vw;
+  text-align: center;
   letter-spacing: 0.05rem;
-  color: #ddd;
+  color: #ccc;
   margin: 0;
+
+  font-size: 5vw;
+  @media (min-width: 768px) {
+    font-size: 3vw;
+  }
 }
 
 .location {
-  font-size: 10vw;
   letter-spacing: 0.1rem;
   font-weight: 400;
-  color: #fff;
+  color: #eee;
   margin-top: 0.125em;
   margin-bottom: 0.5em;
+
+  font-size: 14vw;
+  @media (min-width: 768px) {
+    font-size: 10vw;
+  }
 }
 
 .clock {
   font-family: "Varela Round", monospace;
-  font-size: 6vw;
+  font-size: 5vw;
   letter-spacing: 0.1rem;
   font-weight: 400;
   color: #eee;
   margin: 0;
-}
 
-@media (max-width: 768px) {
-  .text {
+  font-size: 8vw;
+  @media (min-width: 768px) {
     font-size: 5vw;
   }
+}
 
-  .location {
-    font-size: 14vw;
+.itWas {
+  text-align: center;
+  font-size: 3vw;
+  letter-spacing: 0.05rem;
+  color: #ccc;
+  margin: 0;
+  font-size: 5vw;
+  @media (min-width: 768px) {
+    font-size: 3vw;
   }
+}
 
-  .clock {
-    font-size: 9vw;
+.isNow {
+  text-align: center;
+  font-size: 3vw;
+  letter-spacing: 0.05rem;
+  color: #ccc;
+  margin-top: 0.25em;
+  font-size: 5vw;
+  @media (min-width: 768px) {
+    font-size: 3vw;
+  }
+}
+
+.question {
+  color: #eee;
+  margin-top: 0.5em;
+  
+  font-size: 7vw;
+  @media (min-width: 768px) {
+    font-size: 5vw;
   }
 }

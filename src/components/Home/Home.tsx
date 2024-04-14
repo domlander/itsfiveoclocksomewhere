@@ -14,13 +14,13 @@ const DEFAULT_LOCATION_DATA = {
   image: DEFAULT_IMAGE,
 };
 
-const getTimeIn5pmLocation = (hours: number) => {
+export const getTimeIn5pmLocation = (hours: number) => {
   const now = new Date();
   now.setHours((now.getUTCHours() + hours) % 24);
   return now;
 };
 
-const getHoursUntil5pm = () => {
+export const getHoursUntil5pm = () => {
   const currentGMTHours = new Date().getUTCHours();
   const hoursUntil5pm =
     (HOURS_IN_DAY + HOURS_BEFORE_5PM - currentGMTHours) % 24;
