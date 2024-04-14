@@ -1,4 +1,5 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import FivePm from "../src/components/FivePm/FivePm";
 import NotFivePm from "../src/components/NotFivePm";
@@ -32,13 +33,36 @@ export default function Page({ location, gmtOffset, image }: Props) {
   }, [gmtOffset, isPageVisible]);
 
   return (
-    <Background image={image}>
-      {gmtOffset === getGMTHoursUntil5pm() ? (
-        <FivePm location={location} time={time} />
-      ) : (
-        <NotFivePm location={location} time={time} />
-      )}
-    </Background>
+    <>
+      <Head>
+        <title>{`Have a beer in ${location}`}</title>
+        <meta property="og:title" content={`Have a beer in ${location}`} />
+        <meta
+          name="description"
+          content={`Find out whether it's time for a beer in ${location}`}
+        />
+        <meta
+          property="og:url"
+          content={`https://www.itsfiveoclocksomewhere.beer/${location}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_GB" />
+        <meta
+          property="og:image"
+          itemProp="image"
+          content={`https://www.itsfiveoclocksomewhere.beer/${image}`}
+        />
+        <meta property="og:image:width" content="407" />
+        <meta property="og:image:height" content="407" />
+      </Head>
+      <Background image={image}>
+        {gmtOffset === getGMTHoursUntil5pm() ? (
+          <FivePm location={location} time={time} />
+        ) : (
+          <NotFivePm location={location} time={time} />
+        )}
+      </Background>
+    </>
   );
 }
 
