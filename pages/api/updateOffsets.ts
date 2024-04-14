@@ -27,8 +27,8 @@ export default async function handler(
   if (!apiLocationData) return res.status(200);
 
   // All our locations which we have previously selected images for, with up-to-date GMT offset
-  const updatedLocations: (Location | null)[] = LocationImageMapping.map(
-    (location) => {
+  const updatedLocations: (Omit<Location, "last_updated"> | null)[] =
+    LocationImageMapping.map((location) => {
       const matchingLocationFromApi: ApiLocation | null =
         apiLocationData.find(
           (apiLocation) => location.zoneName === apiLocation.zoneName
@@ -41,8 +41,7 @@ export default async function handler(
         gmtOffset: matchingLocationFromApi.gmtOffset,
         zoneName: matchingLocationFromApi.zoneName,
       };
-    }
-  ).filter((x) => x !== null);
+    }).filter((x) => x !== null);
 
   // Create an object that Mongo can use to bulk update all locations with up-to-date GMT offset.
   const dbUpdates = updatedLocations.map((item) => ({
