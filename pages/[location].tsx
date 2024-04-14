@@ -50,7 +50,7 @@ export default function Page({ location, gmtOffset, image }: Props) {
         <meta
           property="og:image"
           itemProp="image"
-          content={`https://www.itsfiveoclocksomewhere.beer/${image}`}
+          content={`https://www.itsfiveoclocksomewhere.beer/landscapes/${image}`}
         />
         <meta property="og:image:width" content="407" />
         <meta property="og:image:height" content="407" />
