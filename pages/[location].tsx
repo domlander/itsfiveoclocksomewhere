@@ -32,6 +32,8 @@ export default function Page({ location, gmtOffset, image }: Props) {
     setStartTime(getTimeInLocation(gmtOffset));
   }, [gmtOffset, isPageVisible]);
 
+  const pngImageUrl = `${image.split(".").slice(0, -1).join("")}.png`;
+
   return (
     <>
       <Head>
@@ -50,7 +52,7 @@ export default function Page({ location, gmtOffset, image }: Props) {
         <meta
           property="og:image"
           itemProp="image"
-          content={`https://www.itsfiveoclocksomewhere.beer/landscapes/${image}`}
+          content={`https://www.itsfiveoclocksomewhere.beer/landscapes/${pngImageUrl}`}
         />
         <meta property="og:image:width" content="407" />
         <meta property="og:image:height" content="407" />
