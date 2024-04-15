@@ -8,12 +8,11 @@
 
 .itWas {
   text-align: center;
-  font-size: 3vw;
   letter-spacing: 0.05rem;
   color: #dadada;
   margin: 0;
+  
   font-size: 5vw;
-
   @media (min-width: 768px) {
     font-size: 3vw;
   }
@@ -21,12 +20,11 @@
 
 .isNow {
   text-align: center;
-  font-size: 3vw;
   letter-spacing: 0.05rem;
   color: #dadada;
   margin-top: 0.5em;
-  font-size: 5vw;
 
+  font-size: 5vw;
   @media (min-width: 768px) {
     font-size: 3vw;
   }
