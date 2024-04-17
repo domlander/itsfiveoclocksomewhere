@@ -38,10 +38,10 @@ export default function Page({ location, gmtOffset, image }: Props) {
     <>
       <Head>
         <title>{`Have a beer in ${location}`}</title>
-        <meta property="og:title" content={`Have a beer in ${location}`} />
+        <meta property="og:title" content={`It's 5pm in...${location}!`} />
         <meta
           name="description"
-          content={`It's 5pm in ${location} and time for a beer`}
+          content={`Have a beer, it's five o'clock somewhere`}
         />
         <meta
           property="og:url"
