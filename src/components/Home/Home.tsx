@@ -48,8 +48,15 @@ const Home = () => {
       return;
     }
 
+    // If it's no longer 5pm when the user comes back to the page, update the location
+    if (!is5pm(time)) {
+      fetchLocationsFromDb(getGMTHoursUntil5pm()).then(({ name, image }) => {
+        updateBackground(name, image);
+      });
+    }
+
     setStartTime(getTimeIn5pmLocation());
-  }, [isPageVisible]);
+  }, [isPageVisible, time]);
 
   /**
    * If it is no longer 5pm here, update the location. Don't update
