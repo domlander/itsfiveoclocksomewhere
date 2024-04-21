@@ -9,13 +9,17 @@ import usePageVisibility from "../src/hooks/usePageVisible";
 import clientPromise from "../utils/mongodb";
 import { getGMTHoursUntil5pm, getTimeInLocation } from "../src/utils";
 
-type ContentProps = {
+type BeerOclockDeciderProps = {
   is5pm: boolean | null;
   location: string;
   time: string;
 };
 
-const Content = ({ is5pm, location, time }: ContentProps) => {
+const BeerOclockDecider = ({
+  is5pm,
+  location,
+  time,
+}: BeerOclockDeciderProps) => {
   if (typeof is5pm === null) {
     return null;
   }
@@ -81,7 +85,7 @@ export default function Page({ location, gmtOffset, image }: Props) {
         <meta property="og:image:height" content="407" />
       </Head>
       <Background image={image}>
-        <Content is5pm={is5pm} location={location} time={time} />
+        <BeerOclockDecider is5pm={is5pm} location={location} time={time} />
       </Background>
     </>
   );
