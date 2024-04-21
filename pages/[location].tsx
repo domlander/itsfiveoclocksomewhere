@@ -9,6 +9,24 @@ import usePageVisibility from "../src/hooks/usePageVisible";
 import clientPromise from "../utils/mongodb";
 import { getGMTHoursUntil5pm, getTimeInLocation } from "../src/utils";
 
+type ContentProps = {
+  is5pm: boolean | null;
+  location: string;
+  time: string;
+};
+
+const Content = ({ is5pm, location, time }: ContentProps) => {
+  if (typeof is5pm === null) {
+    return null;
+  }
+
+  return is5pm ? (
+    <FivePm location={location} time={time} />
+  ) : (
+    <NotFivePm location={location} time={time} />
+  );
+};
+
 type Props = {
   location: string;
   gmtOffset: number;
@@ -17,6 +35,7 @@ type Props = {
 
 export default function Page({ location, gmtOffset, image }: Props) {
   const [startTime, setStartTime] = useState(getTimeInLocation(gmtOffset));
+  const [is5pm, setIs5pm] = useState<boolean | null>(null);
   const time = useClock(startTime);
   const isPageVisible: boolean = usePageVisibility();
 
@@ -31,6 +50,10 @@ export default function Page({ location, gmtOffset, image }: Props) {
 
     setStartTime(getTimeInLocation(gmtOffset));
   }, [gmtOffset, isPageVisible]);
+
+  useEffect(() => {
+    setIs5pm(gmtOffset === getGMTHoursUntil5pm());
+  }, [gmtOffset]);
 
   const pngImageUrl = `${image.split(".").slice(0, -1).join("")}.png`;
 
@@ -58,11 +81,7 @@ export default function Page({ location, gmtOffset, image }: Props) {
         <meta property="og:image:height" content="407" />
       </Head>
       <Background image={image}>
-        {gmtOffset === getGMTHoursUntil5pm() ? (
-          <FivePm location={location} time={time} />
-        ) : (
-          <NotFivePm location={location} time={time} />
-        )}
+        <Content is5pm={is5pm} location={location} time={time} />
       </Background>
     </>
   );
